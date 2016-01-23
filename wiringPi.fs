@@ -6,7 +6,7 @@
 
 \ Update this identifier when the API changes, to force Gforth
 \ to build a new cached library.
-c-library wiringPi_2_29_0
+c-library wiringPi_2_31_0
 
 s" wiringPi" add-lib
 \c #include <wiringPi.h>
@@ -74,6 +74,12 @@ s" wiringPi" add-lib
 1 constant PI_MAKER_EGOMAN
 2 constant PI_MAKER_MBEST
 3 constant PI_MAKER_UNKNOWN
+
+\ TODO: Provide Forth definitions for piModelNames, piRevisionNames,
+\ piMakerNames, and piMemorySize arrays.
+
+\ TODO: Provide Forth definitions for the wiringPiNodes list and
+\ to access fields of a wiringPiNodeStruct..
 
 \ Functions
 

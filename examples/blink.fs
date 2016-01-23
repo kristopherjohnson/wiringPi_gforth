@@ -21,5 +21,6 @@ ledPin OUTPUT pinMode
 : blink   begin  ledOn pause ledOff pause  again ;
 
 \ Start our program.
+." The LED should be blinking." cr
 blink
 
