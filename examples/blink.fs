@@ -3,7 +3,7 @@
 \ Must be run with root permissions. For example: "sudo gforth blink.fs"
 
 \ Load the wiringPi Gforth interface.
-require wiringPi.fs
+require ../wiringPi.fs
 
 \ Initialize the wiringPi library.
 wiringPiSetupGpio drop
