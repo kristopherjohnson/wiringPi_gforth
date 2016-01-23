@@ -11,7 +11,9 @@ Gforth's C interface requires a C compiler toolchain, which is usually already i
 
     sudo apt-get install libtool-bin
 
-To install the wiringPi library, follow the instructions here: <http://wiringpi.com/download-and-install/>
+To install the most recent available version of the  wiringPi library, follow the instructions here: <http://wiringpi.com/download-and-install/>
+
+Note: The Raspbian distribution includes a `wiringpi` package that can be managed with `apt-get`. However, that package may lag behind the most recent official version of wiringPi available from <http://wiringpi.com>.
 
 
 ## Usage
