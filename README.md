@@ -3,11 +3,11 @@
 
 ## Installation
 
-Gforth can be installed on a [Raspbian](https://www.raspbian.org) system with `apt-get`:
+You can install Gforth on a [Raspbian](https://www.raspbian.org) system with `apt-get`:
 
     sudo apt-get install gforth
 
-Gforth's C interface requires a C compiler toolchain, which is usually already installed on a Raspbian system. It also requires [libtool](http://www.gnu.org/software/libtool/), which is usually not installed by default, but can be installed like this:
+Gforth's C interface requires a C compiler toolchain, which is usually already installed on a Raspbian system. It also requires [libtool](http://www.gnu.org/software/libtool/), which is usually not installed by default, so you can install it like this:
 
     sudo apt-get install libtool-bin
 
@@ -16,7 +16,7 @@ To install the wiringPi library, follow the instructions here: <http://wiringpi.
 
 ## Usage
 
-Access to the GPIO hardware requires root access, so must invoke Gforth with `sudo gforth` when using wiringPi.
+Access to the GPIO hardware requires root access, so you must invoke Gforth with `sudo gforth` when using wiringPi.
 
 To call wiringPi functions, push the arguments onto the stack and then invoke the corresponding Gforth word. For example, if you would write this in C:
 
@@ -32,7 +32,7 @@ Then you would write this in Gforth:
 18 HIGH digitalWrite
 ```
 
-When translating wiringPi code from C to Gforth, remember that result codes cannot be ignored. For example, the `wiringPiSetupXXX` functions each return a status code (always 0), which you need to `DROP` to keep your Forth stack balanced.
+When translating wiringPi code from C to Gforth, remember that result codes cannot be ignored. For example, the [wiringPiSetupXXX()](http://wiringpi.com/reference/setup/) functions each return a status code (always 0), which you need to `DROP` to keep your Forth stack balanced.
 
 To load the interface into Gforth and use it interactively, launch Gforth like this:
 
@@ -40,7 +40,7 @@ To load the interface into Gforth and use it interactively, launch Gforth like t
 
 To use wiringPi within a Gforth program, use `require wiringPi.fs` or one of the [other ways](https://www.complang.tuwien.ac.at/forth/gforth/Docs-html/Forth-source-files.html) to read Forth source files.
 
-Here is a complete example:
+Here is a complete example of a Gforth program that uses wiringPi to make an LED blink:
 
 ```forth
 \ Blink an LED connected to GPIO pin 18
@@ -69,5 +69,5 @@ ledPin OUTPUT pinMode
 blink
 ```
 
-The first time you use `wiringPi.fs`, Gforth will build a library in the `~/.gforth/libcc-named/.libs/` directory. Subsequently, Gforth will reuse that cached library. Note that Gforth will continue to use that cached library even if you make your own changes to `wiringPi.fs`, so if you do make changes, you need to delete the libraries in that directory or change the name for the `c-library` declaration in `wiringPi.fs`.
+The first time you use `wiringPi.fs`, Gforth will build a library in your `~/.gforth/libcc-named/.libs/` directory. Subsequently, Gforth will reuse that cached library. Note that Gforth will continue to use that cached library even if you make your own changes to `wiringPi.fs`, so if you do make changes, you need to delete the libraries in that directory or change the name for the `c-library` declaration in `wiringPi.fs`.
 
