@@ -1,4 +1,4 @@
-`wiringPi.fs` defines an interface to the functions in the [wiringPi](http://wiringpi.com) GPIO interface library, allowing those functions to be used in [Gforth](https://www.gnu.org/software/gforth/) programs.
+[wiringPi.fs](https://github.com/kristopherjohnson/wiringPi_gforth/blob/master/wiringPi.fs) defines an interface to the functions in the [wiringPi](http://wiringpi.com) GPIO interface library, allowing those functions to be used in [Gforth](https://www.gnu.org/software/gforth/) programs.
 
 
 ## Installation
