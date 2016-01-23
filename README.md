@@ -18,7 +18,7 @@ To install the wiringPi library, follow the instructions here: <http://wiringpi.
 
 Access to the GPIO hardware requires root access, so you must invoke Gforth with `sudo gforth` when using wiringPi.
 
-To call wiringPi functions, push the arguments onto the stack and then invoke the corresponding Gforth word. For example, if you would write this in C:
+To call wiringPi functions from Gforth, push the arguments onto the stack and then invoke the corresponding Forth word. For example, if you would write this in C:
 
 ```c
 pinMode(18, OUTPUT);
@@ -69,5 +69,5 @@ ledPin OUTPUT pinMode
 blink
 ```
 
-The first time you use `wiringPi.fs`, Gforth will build a library in your `~/.gforth/libcc-named/.libs/` directory. Subsequently, Gforth will reuse that cached library. Note that Gforth will continue to use that cached library even if you make your own changes to `wiringPi.fs`, so if you do make changes, you need to delete the libraries in that directory or change the name for the `c-library` declaration in `wiringPi.fs`.
+The first time you use `wiringPi.fs`, Gforth will build a library in your `/root/.gforth/libcc-named/.libs/` directory. Subsequently, Gforth will reuse that cached library. Note that Gforth will continue to use that cached library even if you make your own changes to `wiringPi.fs`, so if you do make changes, you need to delete the libraries in that directory or change the name for the `c-library` declaration in `wiringPi.fs`.
 
