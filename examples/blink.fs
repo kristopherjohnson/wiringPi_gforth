@@ -4,6 +4,19 @@
 \ 
 \ Must be run with root permissions. For example: "sudo gforth blink.fs"
 \ or "sudo ./blink.fs" (if blink.fs is marked executable)
+\ 
+\ If the environment variable BLINK_DEBUG is set, then instead of
+\ starting the program, we just load all the definitions and then
+\ go into interactive mode.  Invoke the program as
+\ "sudo BLINK_DEBUG=1 gforth blink.fs" to get this behavior.
+
+
+\ Forget and reload definitions if this file is re-included.
+[ifdef] -blink
+    -blink
+[endif]
+marker -blink
+
 
 \ Load the wiringPi Gforth interface.
 require ../wiringPi.fs
@@ -23,7 +36,13 @@ ledPin OUTPUT pinMode
 \ Our program is a simple loop that never ends.
 : blink   begin  ledOn pause ledOff pause  again ;
 
-\ Start our program.
-." The LED should be blinking." cr
-blink
+
+: blink-debug? ( -- f ) s" BLINK_DEBUG" getenv nip ;
+
+blink-debug? [if]
+    ." blink: Entering interactive mode." cr
+[else]
+    ." blink: The LED should start blinking." cr
+    blink
+[then]
 

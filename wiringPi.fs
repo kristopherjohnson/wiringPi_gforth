@@ -4,6 +4,8 @@
 \ and then follow instructions for installing wiringPi library at
 \ <http://wiringpi.com/download-and-install/>.
 
+marker -wiringPi
+
 \ Update this identifier when the API changes, so that Gforth
 \ will build a new cached library.
 c-library wiringPi_2_31_A
