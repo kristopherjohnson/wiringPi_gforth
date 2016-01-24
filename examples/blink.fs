@@ -1,6 +1,9 @@
+#! /usr/bin/env gforth
+
 \ Blink an LED connected to GPIO pin 18
 \ 
 \ Must be run with root permissions. For example: "sudo gforth blink.fs"
+\ or "sudo ./blink.fs" (if blink.fs is marked executable)
 
 \ Load the wiringPi Gforth interface.
 require ../wiringPi.fs
