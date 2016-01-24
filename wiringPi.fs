@@ -4,12 +4,17 @@
 \ and then follow instructions for installing wiringPi library at
 \ <http://wiringpi.com/download-and-install/>.
 
-\ Update this identifier when the API changes, to force Gforth
-\ to build a new cached library.
-c-library wiringPi_2_31_0
+\ Update this identifier when the API changes, so that Gforth
+\ will build a new cached library.
+c-library wiringPi_2_31_A
 
 s" wiringPi" add-lib
+
 \c #include <wiringPi.h>
+\c #include <wiringPiI2C.h>
+\c #include <wiringPiSPI.h>
+\c #include <wiringSerial.h>
+\c #include <wiringShift.h>
 
 \ wiringPi modes
 
@@ -79,7 +84,7 @@ s" wiringPi" add-lib
 \ piMakerNames, and piMemorySize arrays.
 
 \ TODO: Provide Forth definitions for the wiringPiNodes list and
-\ to access fields of a wiringPiNodeStruct..
+\ to access fields of a wiringPiNodeStruct.
 
 \ Functions
 
@@ -139,6 +144,39 @@ c-function delay delay n -- void
 c-function delayMicroseconds delayMicroseconds n -- void
 c-function millis millis -- n
 c-function micros micros -- n
+
+\ wiringPiI2C.h
+
+c-function wiringPiI2CRead wiringPiI2CRead n -- n
+c-function wiringPiI2CReadReg8 wiringPiI2CReadReg8 n n -- n
+c-function wiringPiI2CReadReg16 wiringPiI2CReadReg16 n n -- n
+c-function wiringPiI2CWrite wiringPiI2CWrite n n -- n
+c-function wiringPiI2CWriteReg8 wiringPiI2CWriteReg8 n n n -- n
+c-function wiringPiI2CWriteReg16 wiringPiI2CWriteReg16 n n n -- n
+c-function wiringPiI2CSetupInterface wiringPiI2CSetupInterface a n -- n
+c-function wiringPiI2CSetup wiringPiI2CSetup n -- n
+
+\ wiringPiSPI.h
+
+c-function wiringPiSPIGetFd wiringPiSPIGetFd n -- n
+c-function wiringPiSPIDataRW wiringPiSPIDataRW n a n -- n
+c-function wiringPiSPISetupMode wiringPiSPISetupMode n n n -- n
+c-function wiringPiSPISetup wiringPiSPISetup n n -- n
+
+\ wiringSerial.h
+
+c-function serialOpen serialOpen a n -- n
+c-function serialClose serialClose n -- void
+c-function serialFlush serialFlush n -- void
+c-function serialPutchar serialPutchar n n -- void
+c-function serialPuts serialPuts n a -- void
+c-function serialDataAvail serialDataAvail n -- n
+c-function serialGetchar serialGetchar n -- n
+
+\ wiringShift.h
+
+c-function shiftIn shiftIn n n n -- n
+c-function shiftOut shiftOut n n n n -- void
 
 end-c-library
 
